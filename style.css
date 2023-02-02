@@ -12,6 +12,13 @@ body {
     position: relative;
 }
 
+h1 {
+    background-color: #181717;
+    padding-block: 1rem;
+    padding-left: 10px;
+    margin: 0;
+    border: 1px solid white;
+}
 
 .box,
 input {
@@ -42,5 +49,13 @@ hr {
 .box-container .box:last-child,
 .box-container input:last-child  {
     flex-grow: 4;
+}
+
+.box-below {
+    color: red;
+}
+
+.box-above {
+    color: green;
 }
 
