@@ -27,6 +27,13 @@ let sixesBox = document.getElementById("sixes");
 let sixesArray = [6,12,18,24,30,0];
 let sixesArrayPosition = 0;
 
+let onesAverageScore = 0;
+let twosAverageScore = 0;
+let threesAverageScore = 0;
+let foursAverageScore = 0;
+let fivesAverageScore = 0;
+let sixesAverageScore = 0;
+
 //-------------------------------------------//
 
 //on click, move 1 space through the array. 
@@ -37,6 +44,8 @@ onesBox.addEventListener("click", function(){
     addUpperScore();
     totalGameScore();
     determineColor(onesBox, onesArray);
+    onesAverageScore = midCalc(onesBox, onesArray);
+    plusMinusCount();
 });
 
 twosBox.addEventListener("click", function(){
@@ -44,6 +53,9 @@ twosBox.addEventListener("click", function(){
     addUpperScore();
     totalGameScore()
     determineColor(twosBox, twosArray);
+    midCalc(twosBox, twosArray);
+    twosAverageScore = midCalc(twosBox, twosArray);
+    plusMinusCount();
 });
 
 threesBox.addEventListener("click", function(){
@@ -51,6 +63,9 @@ threesBox.addEventListener("click", function(){
     addUpperScore();
     totalGameScore();
     determineColor(threesBox, threesArray);
+    midCalc(threesBox, threesArray);
+    threesAverageScore = midCalc(threesBox, threesArray);
+    plusMinusCount();
 });
 
 foursBox.addEventListener("click", function(){
@@ -58,6 +73,8 @@ foursBox.addEventListener("click", function(){
     addUpperScore();
     totalGameScore()
     determineColor(foursBox, foursArray);
+    foursAverageScore = midCalc(foursBox, foursArray);
+    plusMinusCount();
 });
 
 fivesBox.addEventListener("click", function(){
@@ -65,6 +82,8 @@ fivesBox.addEventListener("click", function(){
     addUpperScore();
     totalGameScore();
     determineColor(fivesBox, fivesArray);
+    fivesAverageScore = midCalc(fivesBox, fivesArray);
+    plusMinusCount();
 });
 
 sixesBox.addEventListener("click", function(){
@@ -72,6 +91,8 @@ sixesBox.addEventListener("click", function(){
     addUpperScore();
     totalGameScore()
     determineColor(sixesBox, sixesArray);
+    sixesAverageScore = midCalc(sixesBox, sixesArray);
+    plusMinusCount();
 });
 
 function plusOneArray(box, array, arrayPosition) {
@@ -218,3 +239,16 @@ function determineColorInput(box) {
 
 //----------------------------------------------------------------------------------------------//
 //check how above or below my score is from the average
+//score - average
+
+function midCalc(box, array) {
+    let midCalcTotal = (parseInt(box.innerHTML) - array[2])
+    return midCalcTotal
+}
+
+let plusMinusDisplay = document.getElementById("plusMinusDisplay");
+
+function plusMinusCount() {
+    plusMinusDisplay.innerHTML = parseInt(onesAverageScore) + parseInt(twosAverageScore) + parseInt(threesAverageScore) + parseInt(foursAverageScore) + parseInt(fivesAverageScore) + parseInt(sixesAverageScore);
+}
+

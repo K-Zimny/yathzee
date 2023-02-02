@@ -12,11 +12,24 @@ body {
     position: relative;
 }
 
+.header {
+    display: flex;
+    background-color: #181717;
+}
+
 h1 {
     background-color: #181717;
-    padding-block: 1rem;
-    padding-left: 10px;
+    padding: 1rem;
     margin: 0;
+    border: 1px solid white;
+}
+
+#plusMinusDisplay {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
     border: 1px solid white;
 }
 
@@ -58,4 +71,3 @@ hr {
 .box-above {
     background-color: green;
 }
-
