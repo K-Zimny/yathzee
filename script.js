@@ -24,121 +24,14 @@ let sixesArrayPosition = 0;
 
 //----------------------------------------------------------------------------------------------//
 
+//on click, move 1 space in the array
+
 onesBox.addEventListener("click", function(){
-    onesBox.innerHTML = onesArray[onesArrayPosition];
-    onesArrayPosition++;
-    if (onesArrayPosition > onesArray.length - 1) {
-        onesArrayPosition = 0;
-    } 
-    addUpperScore();
-
+    plusOneArray(onesBox, onesArray, onesArrayPosition)
 });
 
-twosBox.addEventListener("click", function(){
-    twosBox.innerHTML = twosArray[twosArrayPosition];
-    twosArrayPosition++;
-    if (twosArrayPosition > twosArray.length - 1) {
-        twosArrayPosition = 0;
-    } 
-    addUpperScore();
-
-});
-
-threesBox.addEventListener("click", function(){
-    threesBox.innerHTML = threesArray[threesArrayPosition];
-    threesArrayPosition++;
-    if (threesArrayPosition > threesArray.length - 1) {
-        threesArrayPosition = 0;
-    } 
-    addUpperScore();
-
-});
-
-foursBox.addEventListener("click", function(){
-    foursBox.innerHTML = foursArray[foursArrayPosition];
-    foursArrayPosition++;
-    if (foursArrayPosition > foursArray.length - 1) {
-        foursArrayPosition = 0;
-    } 
-    addUpperScore();
-
-});
-
-fivesBox.addEventListener("click", function(){
-    fivesBox.innerHTML = fivesArray[fivesArrayPosition];
-    fivesArrayPosition++;
-    if (fivesArrayPosition > fivesArray.length - 1) {
-        fivesArrayPosition = 0;
-    } 
-    addUpperScore();
-
-});
-
-sixesBox.addEventListener("click", function(){
-    sixesBox.innerHTML = sixesArray[sixesArrayPosition];
-    sixesArrayPosition++;
-    if (sixesArrayPosition > sixesArray.length - 1) {
-        sixesArrayPosition = 0;
-    } 
-    addUpperScore();
-});
-
-//----------------------------------------------------------------------------------------------//
-//uppersection
-
-let upperScoreTotal = 0;
-
-function addUpperScore() {
-    upperScoreTotal = parseInt(onesBox.innerHTML) + parseInt(twosBox.innerHTML) + parseInt(threesBox.innerHTML) + parseInt(foursBox.innerHTML) + parseInt(fivesBox.innerHTML) + parseInt (sixesBox.innerHTML)
-    let topScoreDisplay = document.getElementById("topScoreDisplay")
-    if(upperScoreTotal >= 63){
-        upperScoreTotal += 35
-    } else{}
-    topScoreDisplay.innerHTML = upperScoreTotal
-
-    console.log(upperScoreTotal)
+function plusOneArray(box, array, arrayPosition) {
+    box.innerHTML = array[arrayPosition]
+    arrayPosition++;
+    return arrayPosition;
 }
-
-
-
-//----------------------------------------------------------------------------------------------//
-//lower section
-
-let threeOfKind = document.getElementById("threeOfKind");
-
-threeOfKind.addEventListener("input", function(){
-    addLowerScore();
-})
-
-let fullHouseDisplay = document.getElementById("fullHouse");
-fullHouseDisplay.addEventListener("click", function(){
-    if (fullHouseDisplay.innerHTML == 0) {
-        fullHouseDisplay.innerHTML = 25
-    } else {
-        fullHouseDisplay.innerHTML = 0;
-    }
-    addLowerScore();
-})
-
-let smallStraight = document.getElementById("smStraight");
-smallStraight.addEventListener("click", function() {
-    if (smallStraight.innerHTML == 0) {
-        smallStraight.innerHTML = 30
-    } else {
-        smallStraight.innerHTML = 0;
-    }
-    addLowerScore();
-})
-
-
-
-
-let bottomScoreDisplay = document.getElementById("bottomScoreDisplay")
-bottomScoreTotal = 0;
-
-function addLowerScore() {
-    bottomScoreTotal = parseInt(threeOfKind.value) + parseInt(fullHouseDisplay.innerHTML)
-    console.log(bottomScoreTotal)
-}
-
-
