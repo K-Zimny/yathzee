@@ -35,37 +35,43 @@ let sixesArrayPosition = 0;
 onesBox.addEventListener("click", function(){
     onesArrayPosition = plusOneArray(onesBox, onesArray, onesArrayPosition);
     addUpperScore();
-    totalGameScore()
+    totalGameScore();
+    determineColor(onesBox, onesArray);
 });
 
 twosBox.addEventListener("click", function(){
     twosArrayPosition = plusOneArray(twosBox, twosArray, twosArrayPosition);
     addUpperScore();
     totalGameScore()
+    determineColor(twosBox, twosArray);
 });
 
 threesBox.addEventListener("click", function(){
     threesArrayPosition = plusOneArray(threesBox, threesArray, threesArrayPosition);
     addUpperScore();
-    totalGameScore()
+    totalGameScore();
+    determineColor(threesBox, threesArray);
 });
 
 foursBox.addEventListener("click", function(){
     foursArrayPosition = plusOneArray(foursBox, foursArray, foursArrayPosition);
     addUpperScore();
     totalGameScore()
+    determineColor(foursBox, foursArray);
 });
 
 fivesBox.addEventListener("click", function(){
     fivesArrayPosition = plusOneArray(fivesBox, fivesArray, fivesArrayPosition);
     addUpperScore();
-    totalGameScore()
+    totalGameScore();
+    determineColor(fivesBox, fivesArray);
 });
 
 sixesBox.addEventListener("click", function(){
     sixesArrayPosition = plusOneArray(sixesBox, sixesArray, sixesArrayPosition);
     addUpperScore();
     totalGameScore()
+    determineColor(sixesBox, sixesArray);
 });
 
 function plusOneArray(box, array, arrayPosition) {
@@ -99,6 +105,7 @@ threeOfKind.addEventListener("click", function(){
 threeOfKind.addEventListener("input", function(){
     addLowerScore();
     totalGameScore()
+    determineColorInput(threeOfKind)
 })
 
 const fourOfKind = document.getElementById("fourOfKind");
@@ -107,39 +114,41 @@ fourOfKind.addEventListener("click", function(){
 })
 fourOfKind.addEventListener("input", function(){
     addLowerScore();
+    totalGameScore()
+    determineColorInput(fourOfKind)
 })
 
 const fullHouse = document.getElementById("fullHouse");
 fullHouse.addEventListener("click", function(){
-    displayScore(fullHouse, 25)
+    displayScore(fullHouse, 25, fullHouse)
     addLowerScore();
     totalGameScore()
 })
 
 const smStraight = document.getElementById("smStraight");
 smStraight.addEventListener("click", function(){
-    displayScore(smStraight, 30)
+    displayScore(smStraight, 30, smStraight)
     addLowerScore();
     totalGameScore()
 })
 
 const lgStraight = document.getElementById("lgStraight");
 lgStraight.addEventListener("click", function(){
-    displayScore(lgStraight, 40)
+    displayScore(lgStraight, 40, lgStraight)
     addLowerScore();
     totalGameScore()
 })
 
 const yahtzee = document.getElementById("yahtzee");
 yahtzee.addEventListener("click", function(){
-    displayScore(yahtzee, 50)
+    displayScore(yahtzee, 50, yahtzee)
     addLowerScore();
     totalGameScore()
 })
 
 const yahtzeeBonus = document.getElementById("yahtzeeBonus");
 yahtzeeBonus.addEventListener("click", function(){
-    displayScore(yahtzeeBonus, 100)
+    displayScore(yahtzeeBonus, 100, yahtzeeBonus)
     addLowerScore();
     totalGameScore()
 })
@@ -151,13 +160,18 @@ chance.addEventListener("click", function(){
 chance.addEventListener("input", function(){
     addLowerScore();
     totalGameScore()
+    determineColorInput(chance)
 })
 
-function displayScore(display, scoreValue){
+function displayScore(display, scoreValue, box){
     if (display.innerHTML == 0) {
         display.innerHTML = scoreValue
+        box.classList.add("box-above")
+        box.classList.remove("box-below")
     } else {
         display.innerHTML = 0;
+        box.classList.add("box-below")
+        box.classList.remove("box-above")
     }
 }
 
@@ -178,3 +192,29 @@ function totalGameScore() {
     totalGameScoreDisplay.innerHTML = parseInt(bottomScoreDisplay.innerHTML) + parseInt(topScoreDisplay.innerHTML);
 }
 
+//----------------------------------------------------------------------------------------------//
+//set colors if below or above the average score
+//average as array positon[2]
+
+function determineColor(box, array) {
+    if(parseInt(box.innerHTML) > array[1]) {
+        box.classList.add("box-above")
+        box.classList.remove("box-below")
+    } else {
+        box.classList.add("box-below")
+        box.classList.remove("box-above")
+    }
+}
+
+function determineColorInput(box) {
+    if(parseInt(box.value) >= 1) {
+        box.classList.add("box-above")
+        box.classList.remove("box-below")
+    } else {
+        box.classList.add("box-below")
+        box.classList.remove("box-above")
+    }
+}
+
+//----------------------------------------------------------------------------------------------//
+//check how above or below my score is from the average
